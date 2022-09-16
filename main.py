@@ -29,7 +29,7 @@ def user_choice(keep_going, money_in_machine):
             print("---------------")
             user_choice(keep_going, money_in_machine)
         else:
-            print("Please check your spelling and try again.")
+            print("❌ Please check your spelling and try again.")
             user_choice(keep_going, money_in_machine)
         return choice, keep_going
 
@@ -52,7 +52,7 @@ def out_of_order_check(MENU, resources, keep_going):
         not_enough_for_cappuccino = True
 
     if not_enough_for_espresso is True and not_enough_for_latte is True and not_enough_for_cappuccino is True:
-        print("Machine out of order. All resources need refilling.")
+        print("❌ Machine out of order. All resources need refilling. ❌")
         keep_going = False
         return keep_going
     elif not_enough_for_cappuccino is True and not_enough_for_latte is False:
@@ -69,8 +69,8 @@ def resource_check(beverage_dict, resources, choice):
     for i in beverage_dict:
         if beverage_dict[i] > resources[i]:  # [i] here doesnt mean index but name of dictionary key. thats why it knows to correctly compare
                                              # 2 resources in beverage_dict to 3 resources in resources
-            print(f"There's not enough {i} in the machine for a {choice}.")
-            print("Please choose a different beverage.")
+            print(f"❌ There's not enough {i} in the machine for a {choice}.")
+            print("❌ Please choose a different beverage.")
             choice = ""
             user_choice(keep_going, money_in_machine)
 
@@ -97,9 +97,9 @@ def insert_coins(beverage_price, coins, money_in_machine):
             elif money_inserted == beverage_price:
                 return money_in_machine
         except ValueError:
-            print("Not a valid number, please try again.")
+            print("❌ Not a valid number, please try again.")
     if money_inserted < beverage_price:
-        print("Sorry, that's not enough money. Money refunded.")
+        print("❌ Sorry, that's not enough money. Money refunded.")
         money_inserted = 0
         user_choice(keep_going, money_in_machine)
 
@@ -110,7 +110,7 @@ def make_coffee(resources, beverage_dict, MENU, choice, money_in_machine):
     for i in beverage_dict:
         resources[i] -= beverage_dict[i]
     money_in_machine += MENU[choice]["cost"]
-    print(f"{art}\nHere is your {choice}. Enjoy!")
+    print(f"{art}\nHere is your {choice}. Enjoy! ☕")
     print("------------------------------")
     user_choice(keep_going, money_in_machine)
 
